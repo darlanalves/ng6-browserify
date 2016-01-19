@@ -1,5 +1,5 @@
 {
-    "name": "app",
+    "name": "ng6-browserify",
     "description": "Yet another SPA generator with AngularJS and ES6",
     "version": "0.0.0",
     "author": {
@@ -46,17 +46,6 @@
         "watchify": "^3.6.1",
         "ulogger": "^0.2.0"
     },
-    "scripts": {
-        "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/darlanalves/es6-spa-angular"
-    },
-    "browser": {
-        "http": "./node_modules/http-browserify/index.js",
-        "_process": "./node_modules/browserify/lib/_empty.js"
-    },
     "devDependencies": {
         "babel-polyfill": "^6.3.14",
         "browserify-istanbul": "^0.2.1",
@@ -64,5 +53,16 @@
         "karma-coverage": "^0.5.3",
         "karma-fixture-loader": "^1.0.0",
         "lodash-template": "^1.0.0"
+    },
+    "scripts": {
+        "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/darlanalves/ng6-browserify"
+    },
+    "browser": {
+        "http": "./node_modules/http-browserify/index.js",
+        "_process": "./node_modules/browserify/lib/_empty.js"
     }
 }

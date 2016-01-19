@@ -20,7 +20,8 @@ lint:
 	./node_modules/.bin/gulp jshint
 
 setup:
-	npm install;
+	npm install;\
+	./node_modules/.bin/gulp build
 
 docs:
 	rm -rf docs;\
