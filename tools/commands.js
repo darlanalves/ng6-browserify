@@ -59,7 +59,7 @@ function createClass (done) {
 
     function writeService () {
         var _ = require('./command/create-class.js');
-        _.createService(context, done);
+        _.createClass(context, done);
     }
 }
 
@@ -96,7 +96,7 @@ function ask (prompt, callback) {
 }
 
 function header () {
-    console.log('\n Note: use dashed-case in your unit names and modules');
+    console.log('\n   Note: use dashed-case in your unit names and modules\n');
 }
 
 module.exports = {
