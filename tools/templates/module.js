@@ -1,5 +1,9 @@
 import { di } from 'angular-di';
 
-let <%= moduleName %> = di.module();
+/**
+ * <%= moduleName %> module
+ * @private
+ */
+const <%= moduleName %> = di.module();
 
 export default <%= moduleName %>;

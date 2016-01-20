@@ -26,7 +26,7 @@ function createService (done) {
 
         context.domain = answer;
 
-        ask('Service name (e.g. user-service): ', function (answer) {
+        ask('Service name (e.g. user): ', function (answer) {
             if (!answer) return done();
 
             context.name = answer;
@@ -67,7 +67,7 @@ function createModule (done) {
     header();
     var context = {};
 
-    ask('Module name: ', function (name) {
+    ask('Module name (e.g. user): ', function (name) {
         if (!name) return done();
 
         context.name = name;
