@@ -1,13 +1,13 @@
 {
-    "name": "ng6-browserify",
-    "description": "Yet another SPA seed with AngularJS and ES6",
-    "version": "0.1.0",
-    "author": {
-        "name": "Darlan Alves",
-        "email": "me@darlanalv.es"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/darlanalves/ng6-browserify"
-    }
+  "name": "ng6-browserify",
+  "description": "Yet another SPA seed with AngularJS and ES6",
+  "version": "0.1.1",
+  "author": {
+    "name": "Darlan Alves",
+    "email": "me@darlanalv.es"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darlanalves/ng6-browserify"
+  }
 }
