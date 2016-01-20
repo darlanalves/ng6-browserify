@@ -40,6 +40,7 @@ module.exports = function(config) {
             basedir: __dirname,
             debug: true,
             transform: [
+                'stringify',
                 'babelify',
                 require('browserify-istanbul')({
                     ignore: ['**/src/**/*.spec.js', '**/mock/**', '**/test/**'],

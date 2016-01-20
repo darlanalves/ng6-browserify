@@ -10,13 +10,8 @@ var bundles = {
         outputPath: 'public/js',
         entry: './src/app/app.js',
         ignore: ['angular']
-    },
-
-    views: {
-        strip: 'src/app/',
-        src: 'src/app/**/*.html',
-        outputName: 'views.js',
-        outputPath: 'public/js'
+        // NOTE: add builtins here when necessary
+        builtins: []
     },
 
     vendorFiles: {
@@ -29,17 +24,8 @@ var bundles = {
     },
 
     assets: {
-        src: [
-            'src/assets/**/*'
-        ],
+        src: ['src/assets/**/*'],
         outputPath: 'public'
-    },
-
-    components: {
-        strip: 'src/lib/component/',
-        src: 'src/lib/**/*.html',
-        outputName: 'components.js',
-        outputPath: 'public/js'
     },
 
     appCss: {
@@ -88,15 +74,10 @@ function watchProject() {
 
     makeBundle(bundles.app, true);
 
-    gulp.watch(bundles.views.src, buildViewCache);
-    gulp.watch(bundles.components.src, buildComponentCache);
     gulp.watch(bundles.appCss.src, compileAppSass);
     gulp.watch(bundles.vendorFiles.src, ['copy:vendor']);
     gulp.watch(bundles.assets.src, ['copy:assets']);
 
-    // do NOT add the bundles here, they'll run twice!
-    buildViewCache();
-    buildComponentCache();
     compileAppSass();
     copyVendor();
     copyAssets();
@@ -105,11 +86,9 @@ function watchProject() {
 /**
  * Build the entire project
  */
-gulp.task('build', ['views'], buildProject);
+gulp.task('build', buildProject);
 function buildProject() {
     buildApp();
-    buildViewCache();
-    buildComponentCache();
     compileAppSass();
     copyVendor();
     copyAssets();
@@ -121,31 +100,8 @@ function buildProject() {
 gulp.task('compress', compressProject);
 function compressProject() {
     compressFile(bundles.app.outputPath, bundles.app.outputName);
-    compressFile('public/js', 'views.js');
-    compressFile('public/js', 'components.js');
     renameFilesOnIndex();
 }
-
-/**
- * Collect all HTML files of app pages and put into a template cache
- */
-gulp.task('html:views', buildViewCache);
-function buildViewCache() {
-    return buildTemplates(bundles.views);
-}
-
-/**
- * Collect all HTML files of components and put into a template cache
- */
-gulp.task('html:components', buildComponentCache);
-function buildComponentCache() {
-    return buildTemplates(bundles.components);
-}
-
-/**
- * Collect all HTML template files and put them into template cache files
- */
-gulp.task('views', ['html:views', 'html:components']);
 
 /**
  * Build only the main application file
@@ -219,41 +175,6 @@ function copyAssets() {
 }
 
 /**
- * Builds a cache of all templates into a file
- */
-function buildTemplates(bundle) {
-    console.log('Updating view cache: ' + bundle.outputName);
-    var multipipe = require('multipipe');
-    var templateCache = require('gulp-templatecache');
-
-    var pipe = multipipe(
-        gulp.src(bundle.src),
-
-        templateCache({
-            output: bundle.outputName,
-            strip: bundle.strip,
-            moduleName: 'ng',
-            minify: {
-                collapseBooleanAttributes: true,
-                collapseWhitespace: true
-            }
-        }),
-
-        gulp.dest(bundle.outputPath),
-
-        done
-    );
-
-    function done (err) {
-        if (err) return onError(err);
-        onEnd();
-        reload(bundle.outputName);
-    }
-
-    return pipe;
-}
-
-/**
  * Builds a javascript bundle with all the dependencies
  * Optionally, watch files for changes and rebuild
  */
@@ -286,6 +207,12 @@ function makeBundle(bundle, watch) {
         sourceMap: 'inline'
     };
 
+    var stringifyOptions = {
+        extensions: ['.html'],
+        minify: true
+    };
+
+    bundler.transform('stringify', stringifyOptions);
     bundler.transform('babelify', babelOptions);
 
     if (bundle.ignore) {
@@ -367,4 +294,5 @@ var tools = require('./tools/commands');
 gulp.task('add:component', tools.createComponent);
 gulp.task('add:service', tools.createService);
 gulp.task('add:module', tools.createModule);
+gulp.task('add:class', tools.createClass);
 

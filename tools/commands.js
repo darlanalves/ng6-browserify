@@ -2,6 +2,7 @@
 /* jshint node: true */
 
 function createComponent (done) {
+    header();
     ask('Component name: ', function (answer) {
         if (answer) {
             return writeComponent(answer);
@@ -17,6 +18,7 @@ function createComponent (done) {
 }
 
 function createService (done) {
+    header();
     var context = {};
 
     ask('Service domain (e.g. user): ', function (answer) {
@@ -24,7 +26,7 @@ function createService (done) {
 
         context.domain = answer;
 
-        ask('Service name: ', function (answer) {
+        ask('Service name (e.g. user-service): ', function (answer) {
             if (!answer) return done();
 
             context.name = answer;
@@ -38,7 +40,31 @@ function createService (done) {
     }
 }
 
+function createClass (done) {
+    header();
+    var context = {};
+
+    ask('Class domain (e.g. user): ', function (answer) {
+        if (!answer) return done();
+
+        context.domain = answer;
+
+        ask('Class name (e.g. user-avatar): ', function (answer) {
+            if (!answer) return done();
+
+            context.name = answer;
+            writeService();
+        });
+    });
+
+    function writeService () {
+        var _ = require('./command/create-class.js');
+        _.createService(context, done);
+    }
+}
+
 function createModule (done) {
+    header();
     var context = {};
 
     ask('Module name: ', function (name) {
@@ -69,8 +95,13 @@ function ask (prompt, callback) {
     });
 }
 
+function header () {
+    console.log('\n Note: use dashed-case in your unit names and modules');
+}
+
 module.exports = {
     createComponent: createComponent,
     createModule: createModule,
-    createService: createService
+    createService: createService,
+    createClass: createClass
 };
