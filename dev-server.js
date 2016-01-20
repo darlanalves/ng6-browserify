@@ -1,11 +1,13 @@
+var baseDir = process.cwd();
+
 var waterfall = require('run-waterfall');
 var http = require('http');
 var serveStatic = require('ecstatic');
 var fs = require('fs');
 
-var servePublic = serveStatic({  root: __dirname + '/public', autoIndex: true });
-var serveAppTemplates = serveStatic({ root: __dirname + '/src/lib' });
-var serveLibTemplates = serveStatic({  root: __dirname + '/src/app' });
+var servePublic = serveStatic({  root: baseDir + '/public', autoIndex: true });
+var serveAppTemplates = serveStatic({ root: baseDir + '/src/lib' });
+var serveLibTemplates = serveStatic({  root: baseDir + '/src/app' });
 
 var server = http.createServer(handleRequest);
 
@@ -26,7 +28,7 @@ function handleRequest(req, res, cb) {
         function getAppConfig(next) {
             if (/[\/]?config\.json$/.test(req.url)) {
                 res.writeHead(200);
-                fs.createReadStream(__dirname + '/config.json').pipe(res);
+                fs.createReadStream(baseDir + '/config.json').pipe(res);
                 return;
             }
 
