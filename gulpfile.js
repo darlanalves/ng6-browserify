@@ -238,7 +238,7 @@ module.exports = function (bundles) {
      */
     gulp.task('serve', serveFiles);
     function serveFiles() {
-        return require('./dev-server');
+        return require('./server');
     }
 
     function onEnd() {

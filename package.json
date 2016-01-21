@@ -9,5 +9,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/darlanalves/ng6-browserify"
+  },
+  "dependencies": {
+    "ecstatic": "^1.4.0"
   }
 }
