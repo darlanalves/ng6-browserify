@@ -10,12 +10,28 @@ function writeFile (dir, file, text) {
 }
 
 function readFile (dir, file) {
-    return fs.readFileSync(path.join(__dirname, dir, file), 'utf8');
+    return fs.readFileSync(path.join(process.cwd(), dir, file), 'utf8');
 }
 
 function getTemplate (file) {
-    var template = readFile('/../templates/', file);
+    var tplPath = resolveTemplatePath(file);
+    var template = fs.readFileSync(path.join(tplPath, file), 'utf8');
+
     return tmpl(template);
+}
+
+function resolveTemplatePath (file) {
+    var p;
+    var projectPath = path.join(process.cwd(), 'templates');
+    var defaultPath = '/../templates/';
+
+    p = path.join(projectPath, file);
+
+    if (fs.existsSync(p)) {
+        return projectPath;
+    }
+
+    return defaultPath;
 }
 
 function toCamelCase (str) {

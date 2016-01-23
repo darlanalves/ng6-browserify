@@ -1,4 +1,6 @@
 /* jshint node: true */
+var baseDir = process.cwd();
+
 module.exports = function(config) {
     'use strict';
 
@@ -37,7 +39,7 @@ module.exports = function(config) {
 
         browserify: {
             paths: ['src/lib', 'src/app', 'mock', 'test'],
-            basedir: __dirname,
+            basedir: baseDir,
             debug: true,
             transform: [
                 'stringify',

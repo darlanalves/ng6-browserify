@@ -1,6 +1,8 @@
 'use strict';
 /* jshint node: true */
 
+var baseDir = process.cwd();
+
 module.exports = function (bundles) {
     var gulp = require('gulp');
     var liveReload = null;
@@ -153,7 +155,7 @@ module.exports = function (bundles) {
 
         var bundlerOptions = {
             paths: ['src/lib', 'src/app'],
-            basedir: __dirname,
+            basedir: baseDir,
             builtins: ['net', 'http', 'buffer', 'crypto', 'process', '_process', 'stream',
                 'events', 'util', 'string_decoder', 'inherits', 'url', 'punycode',
                 'querystring', 'zlib', '_stream_transform', 'assert'],
@@ -170,7 +172,7 @@ module.exports = function (bundles) {
         }
 
         var babelOptions = {
-            sourceMapRelative: __dirname,
+            sourceMapRelative: baseDir,
             sourceMap: 'inline'
         };
 
