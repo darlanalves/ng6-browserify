@@ -12,10 +12,9 @@ module.exports = function(config) {
         files: [
             require.resolve('babel-polyfill/browser'),
             'node_modules/angular/angular.js',
-            'mock/*.js',
             'test/fixtures.js',
             'src/**/*.spec.js',
-            'test/logger.js',
+            'test/*.js',
 
             {
                 pattern: 'test/fixture/*.json',
@@ -35,6 +34,10 @@ module.exports = function(config) {
             options: {
                 sourceMap: 'inline'
             }
+        },
+
+        watchify: {
+            poll: true
         },
 
         browserify: {
