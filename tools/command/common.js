@@ -23,7 +23,7 @@ function getTemplate (file) {
 function resolveTemplatePath (file) {
     var p;
     var projectPath = path.join(process.cwd(), 'templates');
-    var defaultPath = '/../templates/';
+    var defaultPath = path.join(__dirname, '/../templates/');
 
     p = path.join(projectPath, file);
 
