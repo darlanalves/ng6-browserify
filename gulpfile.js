@@ -230,7 +230,7 @@ module.exports = function (bundles) {
         var file = 'public/index.html';
 
         var content = fs.readFileSync(file, 'utf8');
-        content = content.replace(/\.js/g, '.min.js');
+        content = content.replace('app.js', 'app.min.js');
 
         fs.writeFileSync(file, content);
     }
