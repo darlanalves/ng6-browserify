@@ -154,12 +154,10 @@ module.exports = function (bundles) {
         var bundler, rebundle;
 
         var bundlerOptions = {
-            paths: ['src/lib', 'src/app'],
+            paths: bundle.include || ['src/lib', 'src/app'],
             basedir: baseDir,
-            builtins: ['net', 'http', 'buffer', 'crypto', 'process', '_process', 'stream',
-                'events', 'util', 'string_decoder', 'inherits', 'url', 'punycode',
-                'querystring', 'zlib', '_stream_transform', 'assert'],
-            debug: watch,
+            builtins: bundle.builtins || [],
+            debug: bundle.debug,
             cache: {}, // required for watchify
             packageCache: {}, // required for watchify
             fullPaths: watch, // required to be true only for watchify,

@@ -5,7 +5,7 @@ module.exports = function(config) {
     'use strict';
 
     config.set({
-        reporters: ['dots', 'coverage'],
+        reporters: ['dots'],
         browsers: ['PhantomJS'],
         frameworks: ['browserify', 'jasmine'],
 
@@ -46,21 +46,8 @@ module.exports = function(config) {
             debug: true,
             transform: [
                 'stringify',
-                'babelify',
-                require('browserify-istanbul')({
-                    ignore: ['**/src/**/*.spec.js', '**/mock/**', '**/test/**'],
-                    defaultIgnore: true,
-                    instrumenterConfig: { embedSource: true }
-                })
+                'babelify'
             ]
-        },
-
-        coverageReporter: {
-            dir: 'test/coverage/',
-            reporters: [
-                { type: 'html' },
-                { type: 'text-summary' }
-            ]
-        },
+        }
     });
 };
