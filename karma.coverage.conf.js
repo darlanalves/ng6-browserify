@@ -5,13 +5,13 @@ module.exports = function(config) {
     require('./karma.conf')(config);
 
     var istanbul = require('browserify-istanbul')({
-        ignore: ['**/src/**/*.spec.js', '**/mock/**', '**/test/**'],
+        ignore: ['**/src/**/*.spec.js', '**/*.html', '**/mock/**', '**/test/**'],
         defaultIgnore: true,
         instrumenterConfig: { embedSource: true }
     });
 
     config.set({
-        reporters: ['dots', 'coverage'],
+        reporters: ['jasmine-diff', 'dots', 'coverage'],
         coverageReporter: {
             dir: 'test/coverage/',
             reporters: [

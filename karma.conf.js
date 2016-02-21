@@ -5,7 +5,7 @@ module.exports = function(config) {
     'use strict';
 
     config.set({
-        reporters: ['dots'],
+        reporters: ['jasmine-diff', 'dots'],
         browsers: ['PhantomJS'],
         frameworks: ['browserify', 'jasmine'],
 
