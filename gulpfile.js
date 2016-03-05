@@ -229,6 +229,7 @@ module.exports = function (bundles) {
 
         var content = fs.readFileSync(file, 'utf8');
         content = content.replace('app.js', 'app.min.js');
+        content = content.replace('angular.js', 'angular.min.js');
 
         fs.writeFileSync(file, content);
     }
