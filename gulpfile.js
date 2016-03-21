@@ -234,14 +234,6 @@ module.exports = function (bundles) {
         fs.writeFileSync(file, content);
     }
 
-    /**
-     * Fire up an HTTP server to test the app
-     */
-    gulp.task('serve', serveFiles);
-    function serveFiles() {
-        return require('./server');
-    }
-
     function onEnd() {
         console.log('Done.');
     }
@@ -263,5 +255,4 @@ module.exports = function (bundles) {
     gulp.task('add:service', tools.createService);
     gulp.task('add:module', tools.createModule);
     gulp.task('add:class', tools.createClass);
-
 };
