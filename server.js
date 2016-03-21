@@ -1,6 +1,6 @@
 'use strict';
 /* jshint node:true */
-var isSSL = process.env.SSL === 1;
+var isSSL = process.env.SSL;
 var baseDir = process.cwd();
 var http = require('http');
 var https = require('https');
@@ -16,12 +16,11 @@ function createServer(handler) {
         if (!hasCertificate) {
             console.log(
                 'SSL Certificate not found!\n' +
-                'To generate a local SSL certificate, run these commands:\n\n' +
+                'To generate a local SSL certificate, go to http://www.selfsignedcertificate.com/' +
+                'or run these commands:\n\n' +
 
-                'openssl genrsa -out key.pem\n' +
-                'openssl req -new -key key.pem -out csr.pem\n' +
-                'openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem\n' +
-                'rm csr.pem\n\n'
+                'openssl genrsa -out key.pem 2048\n' +
+                'openssl req -new -x509 -key key.pem -out cert.pem -days 3650 -subj /CN={cert.domain.here}\n\n'
             );
             process.exit(1);
         }
