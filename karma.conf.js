@@ -9,20 +9,7 @@ module.exports = function(config) {
         browsers: ['PhantomJS'],
         frameworks: ['browserify', 'jasmine'],
 
-        files: [
-            require.resolve('babel-polyfill/browser'),
-            'node_modules/angular/angular.js',
-            'test/fixtures.js',
-            'src/**/*.spec.js',
-            'test/*.js',
-
-            {
-                pattern: 'test/fixture/*.json',
-                watched: true,
-                served: true,
-                included: false
-            }
-        ],
+        files: [],
 
         preprocessors: {
             'src/**/*.spec.js': ['browserify'],
@@ -41,7 +28,7 @@ module.exports = function(config) {
         },
 
         browserify: {
-            paths: ['src/lib', 'src/app', 'mock', 'test'],
+            paths: [],
             basedir: baseDir,
             debug: true,
             transform: [

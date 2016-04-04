@@ -154,7 +154,7 @@ module.exports = function (bundles) {
         var bundler, rebundle;
 
         var bundlerOptions = {
-            paths: bundle.include || ['src/lib', 'src/app'],
+            paths: bundle.include,
             basedir: baseDir,
             builtins: bundle.builtins || [],
             debug: bundle.debug,
@@ -228,8 +228,11 @@ module.exports = function (bundles) {
         var file = 'public/index.html';
 
         var content = fs.readFileSync(file, 'utf8');
-        content = content.replace('app.js', 'app.min.js');
-        content = content.replace('angular.js', 'angular.min.js');
+        var map = bundles.bundleReplacedFiles;
+
+        Object.keys(map).forEach(function(key) {
+            content = content.replace(key, map[key]);
+        });
 
         fs.writeFileSync(file, content);
     }
