@@ -1,4 +1,4 @@
-import { <%= className %> } from './<%= name %>.service';
+import <%= className %> from './<%= name %>.service';
 
 describe('<%= className %>', function() {
     let instance;
@@ -6,6 +6,5 @@ describe('<%= className %>', function() {
     beforeEach(function () {
         instance = new <%= className %>();
     });
-
 
 });

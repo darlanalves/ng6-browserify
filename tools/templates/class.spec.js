@@ -1,4 +1,4 @@
-import { <%= className %> } from './<%= name %>';
+import <%= className %> from './<%= name %>';
 
 describe('<%= className %>', function() {
     let instance;

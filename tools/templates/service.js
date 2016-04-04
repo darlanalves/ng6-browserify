@@ -9,4 +9,4 @@ class <%= className %> {
 
 di.inject(<%= className %>, '');
 
-export { <%= className %> };
+export default <%= className %>;
