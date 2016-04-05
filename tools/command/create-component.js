@@ -4,7 +4,7 @@
 var _ = require('./common');
 var path = require('path');
 
-var componentDir = 'src/lib/component/';
+var componentDir = 'src/component/';
 
 function createComponent (name, done) {
     var className = _.toCamelCase(name);

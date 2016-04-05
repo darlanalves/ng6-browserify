@@ -15,7 +15,7 @@ function createClass (params, done) {
     var spec = getTemplate('class.spec.js')(context);
     var cmp = getTemplate('class.js')(context);
 
-    var targetDir = 'src/lib/' + params.domain;
+    var targetDir = 'src/' + params.domain;
 
     _.mkdir(targetDir);
     _.writeFile(targetDir, name + '.js',      cmp);

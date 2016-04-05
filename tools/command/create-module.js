@@ -5,7 +5,7 @@ var _ = require('./common');
 
 function createModule(name, done) {
     var content = getModuleTemplate(name);
-    var targetDir = 'src/lib/' + name;
+    var targetDir = 'src/' + name;
 
     _.mkdir(targetDir);
     _.writeFile(targetDir, 'module.js', content);

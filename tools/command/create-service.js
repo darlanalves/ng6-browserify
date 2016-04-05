@@ -15,7 +15,7 @@ function createService (params, done) {
     var spec = getTemplate('service.spec.js')(context);
     var cmp = getTemplate('service.js')(context);
 
-    var targetDir = 'src/lib/' + params.domain;
+    var targetDir = 'src/' + params.domain;
 
     _.mkdir(targetDir);
     _.writeFile(targetDir, name + '.service.js',      cmp);
