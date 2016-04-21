@@ -1,7 +1,7 @@
 {
   "name": "ng6-browserify",
   "description": "Yet another SPA seed with AngularJS and ES6",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "Darlan Alves",
     "email": "me@darlanalv.es"
