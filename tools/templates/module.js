@@ -1,4 +1,4 @@
-import { di } from 'angular-di';
+import di from 'angular-di';
 
 /**
  * <%= moduleName %> module

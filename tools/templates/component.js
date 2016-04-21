@@ -1,4 +1,4 @@
-import { di } from 'angular-di';
+import di from 'angular-di';
 import template from './<%= name %>.html';
 
 class <%= className %> {

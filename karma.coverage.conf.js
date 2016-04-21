@@ -2,8 +2,6 @@
 module.exports = function(config) {
     'use strict';
 
-    require('./karma.conf')(config);
-
     var istanbul = require('browserify-istanbul')({
         ignore: ['**/src/**/*.spec.js', '**/*.html', '**/mock/**', '**/test/**'],
         defaultIgnore: true,
