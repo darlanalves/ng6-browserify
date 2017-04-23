@@ -3,8 +3,8 @@
 
 var baseDir = process.cwd();
 
-module.exports = function (bundles) {
-    var gulp = require('gulp');
+module.exports = function (bundles, gulp) {
+    gulp = gulp || require('gulp');
     var liveReload = null;
 
     /**
