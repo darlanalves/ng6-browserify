@@ -19,7 +19,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "ecstatic": "^1.4.0",
-    "esdoc": "^1.0.0",
+    "esdoc": "^0.x",
     "gulp": "3.9.0",
     "gulp-babel": "^6.1.0",
     "gulp-concat": "^2.6.0",
